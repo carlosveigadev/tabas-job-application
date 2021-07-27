@@ -3,7 +3,5 @@ class Property < ApplicationRecord
 
   validates :name, presence: true
 
-  def cover_photo
-    photo = Photo.where(property_id: id).third
-  end
+  scope :cover_photo, -> (property_id){ Photo.where(property_id: property_id).third }
 end
