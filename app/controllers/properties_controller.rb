@@ -2,8 +2,8 @@ class PropertiesController < ApplicationController
   before_action :current_property, only: [:show]
 
   def index
-    properties = Property.page((params[:page] ? params[:page].to_i : 1)).per(10)        
-    result = { objects: properties, meta: pagination_meta(properties) }
+    properties = Property.all        
+    result = { objects: properties }
     json_response(result)
   end
 
