@@ -57,7 +57,7 @@ const createCarousel = (item) => {
     } else {
       img.src = `./${photos[i].path_url}`;
     }
-
+    // img.height = '600px';
     img.alt = `imagem de ${propertyName}`;
 
     carouselItem.append(img);
@@ -70,7 +70,7 @@ const createCarousel = (item) => {
   const buttonPrev = document.createElement('button');
   buttonPrev.className = 'carousel-control-prev';
   buttonPrev.type = 'button';
-  buttonPrev.setAttribute('data-bs-target', '#carouselControls');
+  buttonPrev.setAttribute('data-bs-target', `#carouselProperty${propertyId}`);
   buttonPrev.setAttribute('data-bs-slide', 'prev');
 
   const spanPrev = document.createElement('span');
@@ -81,12 +81,12 @@ const createCarousel = (item) => {
   spanHiddenPrev.textContent = 'Previous';
 
   buttonPrev.append(spanPrev, spanHiddenPrev);
-  carouselInner.append(buttonPrev);
+  carouselProperty.append(buttonPrev);
 
   const buttonNext = document.createElement('button');
   buttonNext.className = 'carousel-control-next';
   buttonNext.type = 'button';
-  buttonNext.setAttribute('data-bs-target', '#carouselControls');
+  buttonNext.setAttribute('data-bs-target', `#carouselProperty${propertyId}`);
   buttonNext.setAttribute('data-bs-slide', 'next');
 
   const spanNext = document.createElement('span');
@@ -97,7 +97,7 @@ const createCarousel = (item) => {
   spanHiddenNext.textContent = 'Next';
 
   buttonNext.append(spanNext, spanHiddenNext);
-  carouselInner.append(buttonNext);
+  carouselProperty.append(buttonNext);
 
   const h1 = document.createElement('h1');
   h1.innerHTML = item.data.property.name;

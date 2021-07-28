@@ -2037,7 +2037,8 @@ var createCarousel = function createCarousel(item) {
       carouselItem.classList.add('active');
     } else {
       img.src = "./".concat(photos[i].path_url);
-    }
+    } // img.height = '600px';
+
 
     img.alt = "imagem de ".concat(propertyName);
     carouselItem.append(img);
@@ -2048,7 +2049,7 @@ var createCarousel = function createCarousel(item) {
   var buttonPrev = document.createElement('button');
   buttonPrev.className = 'carousel-control-prev';
   buttonPrev.type = 'button';
-  buttonPrev.setAttribute('data-bs-target', '#carouselControls');
+  buttonPrev.setAttribute('data-bs-target', "#carouselProperty".concat(propertyId));
   buttonPrev.setAttribute('data-bs-slide', 'prev');
   var spanPrev = document.createElement('span');
   spanPrev.className = 'carousel-control-prev-icon';
@@ -2057,11 +2058,11 @@ var createCarousel = function createCarousel(item) {
   spanHiddenPrev.className = 'visually-hidden';
   spanHiddenPrev.textContent = 'Previous';
   buttonPrev.append(spanPrev, spanHiddenPrev);
-  carouselInner.append(buttonPrev);
+  carouselProperty.append(buttonPrev);
   var buttonNext = document.createElement('button');
   buttonNext.className = 'carousel-control-next';
   buttonNext.type = 'button';
-  buttonNext.setAttribute('data-bs-target', '#carouselControls');
+  buttonNext.setAttribute('data-bs-target', "#carouselProperty".concat(propertyId));
   buttonNext.setAttribute('data-bs-slide', 'next');
   var spanNext = document.createElement('span');
   spanNext.className = 'carousel-control-next-icon';
@@ -2070,7 +2071,7 @@ var createCarousel = function createCarousel(item) {
   spanHiddenNext.className = 'visually-hidden';
   spanHiddenNext.textContent = 'Next';
   buttonNext.append(spanNext, spanHiddenNext);
-  carouselInner.append(buttonNext);
+  carouselProperty.append(buttonNext);
   var h1 = document.createElement('h1');
   h1.innerHTML = item.data.property.name;
   main.append(carouselProperty);
@@ -2129,7 +2130,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45595" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33005" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
