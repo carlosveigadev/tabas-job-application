@@ -20,7 +20,7 @@ const createCarousel = (item) => {
   const carouselProperty = document.createElement('div');
   carouselProperty.setAttribute('data-bs-ride', 'carousel');
   carouselProperty.id = `carouselProperty${propertyId}`;
-  carouselProperty.className = 'carousel slide';
+  carouselProperty.className = 'carousel slide col-4';
 
   const carouselIndicators = document.createElement('div');
   carouselIndicators.className = 'carousel-indicators';
@@ -50,14 +50,15 @@ const createCarousel = (item) => {
     img.className = 'd-block w-100';
 
     if (i === 0) {
-      // img.srcset = `./${photoCover.path_url}`;
-      img.src = `app/assets/images/cover-1.jpeg`;
+      // img.src = `./${photoCover.path_url}`;
+      img.src = `https://www.gstatic.com/webp/gallery/1.jpg`;
       
       carouselItem.classList.add('active');
     } else {
-      img.src = `./${photos[i].path_url}`;
+      // img.src = `./${photos[i].path_url}`;
+      img.src = `https://www.gstatic.com/webp/gallery/2.jpg`;
     }
-    // img.height = '600px';
+
     img.alt = `imagem de ${propertyName}`;
 
     carouselItem.append(img);
@@ -99,12 +100,7 @@ const createCarousel = (item) => {
   buttonNext.append(spanNext, spanHiddenNext);
   carouselProperty.append(buttonNext);
 
-  const h1 = document.createElement('h1');
-  h1.innerHTML = item.data.property.name;
   main.append(carouselProperty);
-
-  main.append(h1)
-  console.log(main)
 }
 
 

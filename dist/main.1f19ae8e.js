@@ -2005,7 +2005,7 @@ var createCarousel = function createCarousel(item) {
   var carouselProperty = document.createElement('div');
   carouselProperty.setAttribute('data-bs-ride', 'carousel');
   carouselProperty.id = "carouselProperty".concat(propertyId);
-  carouselProperty.className = 'carousel slide';
+  carouselProperty.className = 'carousel slide col-4';
   var carouselIndicators = document.createElement('div');
   carouselIndicators.className = 'carousel-indicators';
   var carouselInner = document.createElement('div');
@@ -2032,13 +2032,13 @@ var createCarousel = function createCarousel(item) {
     img.className = 'd-block w-100';
 
     if (i === 0) {
-      // img.srcset = `./${photoCover.path_url}`;
-      img.src = "app/assets/images/cover-1.jpeg";
+      // img.src = `./${photoCover.path_url}`;
+      img.src = "https://www.gstatic.com/webp/gallery/1.jpg";
       carouselItem.classList.add('active');
     } else {
-      img.src = "./".concat(photos[i].path_url);
-    } // img.height = '600px';
-
+      // img.src = `./${photos[i].path_url}`;
+      img.src = "https://www.gstatic.com/webp/gallery/2.jpg";
+    }
 
     img.alt = "imagem de ".concat(propertyName);
     carouselItem.append(img);
@@ -2072,11 +2072,7 @@ var createCarousel = function createCarousel(item) {
   spanHiddenNext.textContent = 'Next';
   buttonNext.append(spanNext, spanHiddenNext);
   carouselProperty.append(buttonNext);
-  var h1 = document.createElement('h1');
-  h1.innerHTML = item.data.property.name;
   main.append(carouselProperty);
-  main.append(h1);
-  console.log(main);
 };
 
 var _default = listProperties;

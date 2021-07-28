@@ -46,6 +46,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-li:hover a:hover {
-  text-decoration: none;
+li, li:hover, a, a:hover {
+  text-decoration: none !important;
 }

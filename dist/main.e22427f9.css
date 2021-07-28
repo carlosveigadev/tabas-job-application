@@ -31,7 +31,6 @@ body {
   color: #dbb95a;
 }
 
-
 .language-icon img {
   margin-bottom: 5px;
   height: 20px;
@@ -47,6 +46,10 @@ body {
   display: inline-block;
   position:relative;
   top:-5px;
+}
+
+#main-properties {
+  margin-top: 100px;
 }
 
 
