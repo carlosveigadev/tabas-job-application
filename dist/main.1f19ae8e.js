@@ -2105,8 +2105,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (function start() {
   var propertyApp = {
     init: function init() {
-      // fetch data from api to populate the property list
-      // const test = getPropertiesData();
       (0, _getPropertiesData.default)().then(function (object) {
         return (0, _listProperties.default)(object);
       });
