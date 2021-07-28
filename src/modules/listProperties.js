@@ -17,16 +17,20 @@ const createCarousel = (item) => {
   const photosLength = item.data.property_photos.length;
   const photoCover = item.data.cover_photo;
 
+  const holderDiv = document.createElement('div');
+  holderDiv.className = 'col-4';
+
   const carouselProperty = document.createElement('div');
   carouselProperty.setAttribute('data-bs-ride', 'carousel');
   carouselProperty.id = `carouselProperty${propertyId}`;
-  carouselProperty.className = 'carousel slide col-4';
+  carouselProperty.className = 'carousel slide';
+  carouselProperty.setAttribute('data-interval', 'false');
 
   const carouselIndicators = document.createElement('div');
   carouselIndicators.className = 'carousel-indicators';
 
   const carouselInner = document.createElement('div');
-  carouselInner.className = 'carousel-inner';
+  carouselInner.className = 'carousel-inner bg-white shadow p-1';
 
   for (let i = 0; i < photosLength; i++) {
     
@@ -52,11 +56,13 @@ const createCarousel = (item) => {
     if (i === 0) {
       // img.src = `./${photoCover.path_url}`;
       img.src = `https://www.gstatic.com/webp/gallery/1.jpg`;
+      img.width = '300px'
       
       carouselItem.classList.add('active');
     } else {
       // img.src = `./${photos[i].path_url}`;
       img.src = `https://www.gstatic.com/webp/gallery/2.jpg`;
+      img.width = '300px'
     }
 
     img.alt = `imagem de ${propertyName}`;
@@ -100,7 +106,8 @@ const createCarousel = (item) => {
   buttonNext.append(spanNext, spanHiddenNext);
   carouselProperty.append(buttonNext);
 
-  main.append(carouselProperty);
+  holderDiv.append(carouselProperty);
+  main.append(holderDiv);
 }
 
 

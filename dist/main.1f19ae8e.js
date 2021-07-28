@@ -2002,14 +2002,17 @@ var createCarousel = function createCarousel(item) {
   var photos = item.data.property_photos;
   var photosLength = item.data.property_photos.length;
   var photoCover = item.data.cover_photo;
+  var holderDiv = document.createElement('div');
+  holderDiv.className = 'col-4';
   var carouselProperty = document.createElement('div');
   carouselProperty.setAttribute('data-bs-ride', 'carousel');
   carouselProperty.id = "carouselProperty".concat(propertyId);
-  carouselProperty.className = 'carousel slide col-4';
+  carouselProperty.className = 'carousel slide';
+  carouselProperty.setAttribute('data-interval', 'false');
   var carouselIndicators = document.createElement('div');
   carouselIndicators.className = 'carousel-indicators';
   var carouselInner = document.createElement('div');
-  carouselInner.className = 'carousel-inner';
+  carouselInner.className = 'carousel-inner bg-white shadow p-1';
 
   for (var i = 0; i < photosLength; i++) {
     var buttonIndicator = document.createElement('button');
@@ -2034,10 +2037,12 @@ var createCarousel = function createCarousel(item) {
     if (i === 0) {
       // img.src = `./${photoCover.path_url}`;
       img.src = "https://www.gstatic.com/webp/gallery/1.jpg";
+      img.width = '300px';
       carouselItem.classList.add('active');
     } else {
       // img.src = `./${photos[i].path_url}`;
       img.src = "https://www.gstatic.com/webp/gallery/2.jpg";
+      img.width = '300px';
     }
 
     img.alt = "imagem de ".concat(propertyName);
@@ -2072,7 +2077,8 @@ var createCarousel = function createCarousel(item) {
   spanHiddenNext.textContent = 'Next';
   buttonNext.append(spanNext, spanHiddenNext);
   carouselProperty.append(buttonNext);
-  main.append(carouselProperty);
+  holderDiv.append(carouselProperty);
+  main.append(holderDiv);
 };
 
 var _default = listProperties;
