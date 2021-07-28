@@ -1,0 +1,1 @@
+{"version":3,"sources":["font.css"],"names":[],"mappings":"AAAA,aAAa,mBAAmB,EAAE,iDAA8B,EAAE;AAClE,aAAa,wBAAwB,EAAE,iBAAiB,EAAE,iDAAkC,EAAE","file":"font.a9801837.css","sourceRoot":"../src","sourcesContent":["@font-face { font-family: Gilroy; src: url('./Gilroy-Light.otf'); } \n@font-face { font-family: GilroyExtra; font-weight: bold; src: url('./Gilroy-ExtraBold.otf'); }"]}

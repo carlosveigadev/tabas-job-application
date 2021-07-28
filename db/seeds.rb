@@ -6,7 +6,7 @@ require 'faker'
   )
 end
 
-50.times do |n|
+51.times do |n|
   Photo.create(
     property_id: "#{n}",
     path_url: "app/assets/images/inside-#{rand(1..4)}.jpeg"
