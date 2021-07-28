@@ -30,4 +30,4 @@ end
 
 p clean_date(['11 Aug 2020', '29 Jan', '27 Jan', '1 Dec 2022', '28 Jan'])
 
-p clean_date_with_checking(['11 Aug 2020', '29 Jan', '27 Jan', '1 Dec 2022', '28 Jan', 'not a date'])
+p clean_date_with_checking(['11 Aug 2020', '29 Jan', 'not a date', '27 Jan', '1 Dec 2022', '28 Jan', 'not a date'])
