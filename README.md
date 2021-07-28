@@ -35,9 +35,13 @@ After that, open the folder with the code editor of your choice and follow the s
 ## **To run the webpage**
 **Make sure you have [Yarn](https://yarnpkg.com/) installed in your machine.**
 **Open the terminal and go to the folder of the game and run the following commands:** <br>
-`yarn install` <br>
-`yarn start` <br>
+* `yarn install` <br>
+* `yarn start` <br>
 
+**The server will start at [http://localhost:8080](http://localhost:8080), make sure the server is running to access it.**
+
+
+## **Backend Coding Challenge**
 **The file with the backend exercise is located at [clean_date.rb](clean_date.rb), run ruby clean_date.rb to check the method with samples**
 
 ### **Things I would add if I had more time:**
