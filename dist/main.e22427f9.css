@@ -1,0 +1,65 @@
+body {
+  font-family: Gilroy, sans-serif;
+  background-color: #eeeeee;
+}
+
+.navbar {
+  background-color: #000;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 0;
+}
+
+.tabas-navbar-logo {
+  align-self: center;
+}
+
+.tabas-navbar-logo img {
+  height: 30px;
+}
+
+.navigation-menu {
+  margin: 0;
+}
+
+.navigation-menu li {
+  display: flex;
+  gap: 30px;
+}
+
+.navigation-menu li a:last-child {
+  color: #dbb95a;
+}
+
+.language-icon img {
+  margin-bottom: 5px;
+  height: 20px;
+}
+
+.support-border {
+  padding: 0 30px;
+  border-left: 5px solid #dbb95a;
+  border-right: 5px solid #dbb95a; ;
+}
+
+.support-border span {
+  display: inline-block;
+  position:relative;
+  top:-5px;
+}
+
+#main-properties {
+  margin-top: 4rem;
+}
+
+.carousel {
+  width: 300px;
+  heigth: 300px;
+}
+
+.detailsDiv {
+  background-color: white;
+  width: 300px;
+}
+
+/*# sourceMappingURL=/main.e22427f9.css.map */
