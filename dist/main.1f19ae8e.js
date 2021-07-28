@@ -2031,16 +2031,15 @@ var createCarousel = function createCarousel(item) {
     carouselProperty.append(carouselIndicators);
     var carouselItem = document.createElement('div');
     carouselItem.className = 'carousel-item';
+    carouselItem.width = '300px';
     var img = document.createElement('img');
     img.className = 'd-block w-100';
 
     if (i === 0) {
       img.src = "./".concat(photoCover.path_url);
-      img.width = '300px';
       carouselItem.classList.add('active');
     } else {
       img.src = "./".concat(photos[i].path_url);
-      img.width = '300px';
     }
 
     img.alt = "imagem de ".concat(propertyName);
@@ -2130,7 +2129,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38041" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43645" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -49,18 +49,17 @@ const createCarousel = (item) => {
 
     const carouselItem = document.createElement('div');
     carouselItem.className = 'carousel-item';
+    carouselItem.width = '300px';
 
     const img = document.createElement('img');
     img.className = 'd-block w-100';
 
     if (i === 0) {
       img.src = `./${photoCover.path_url}`;
-      img.width = '300px'
       
       carouselItem.classList.add('active');
     } else {
       img.src = `./${photos[i].path_url}`;
-      img.width = '300px'
     }
 
     img.alt = `imagem de ${propertyName}`;
