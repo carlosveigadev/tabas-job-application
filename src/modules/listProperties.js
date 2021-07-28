@@ -54,14 +54,12 @@ const createCarousel = (item) => {
     img.className = 'd-block w-100';
 
     if (i === 0) {
-      // img.src = `./${photoCover.path_url}`;
-      img.src = `https://www.gstatic.com/webp/gallery/1.jpg`;
+      img.src = `./${photoCover.path_url}`;
       img.width = '300px'
       
       carouselItem.classList.add('active');
     } else {
-      // img.src = `./${photos[i].path_url}`;
-      img.src = `https://www.gstatic.com/webp/gallery/2.jpg`;
+      img.src = `./${photos[i].path_url}`;
       img.width = '300px'
     }
 

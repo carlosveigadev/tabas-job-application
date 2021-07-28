@@ -1939,7 +1939,7 @@ var getPropertiesData = function getPropertiesData() {
   }).then(function (res) {
     return res;
   }).catch(function (err) {
-    return console.log(err);
+    return err;
   });
 };
 
@@ -1967,7 +1967,7 @@ var fetchProperty = function fetchProperty(id) {
   }).then(function (res) {
     return res;
   }).catch(function (err) {
-    return console.log(err);
+    return err;
   });
 };
 
@@ -2035,13 +2035,11 @@ var createCarousel = function createCarousel(item) {
     img.className = 'd-block w-100';
 
     if (i === 0) {
-      // img.src = `./${photoCover.path_url}`;
-      img.src = "https://www.gstatic.com/webp/gallery/1.jpg";
+      img.src = "./".concat(photoCover.path_url);
       img.width = '300px';
       carouselItem.classList.add('active');
     } else {
-      // img.src = `./${photos[i].path_url}`;
-      img.src = "https://www.gstatic.com/webp/gallery/2.jpg";
+      img.src = "./".concat(photos[i].path_url);
       img.width = '300px';
     }
 
@@ -2132,7 +2130,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33005" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38041" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

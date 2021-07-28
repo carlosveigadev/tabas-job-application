@@ -6,6 +6,6 @@ const fetchProperty = (id) => axios({
   headers: {
     'Content-Type': 'application/json',
   },
-}).then(res => res).catch(err => console.log(err));
+}).then(res => res).catch(err => err);
 
 export default fetchProperty;
