@@ -36,6 +36,9 @@ gem 'kaminari'
 gem 'active_model_serializers'
 gem 'api-pagination' 
 
+#DB Feed
+gem 'faker'
+
 #Tests
 gem 'rspec-rails'
 
