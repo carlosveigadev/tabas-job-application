@@ -1990,59 +1990,92 @@ var listProperties = function listProperties(properties) {
 
   for (var i = 0; i < propertiesObject.length; i++) {
     (0, _fetchProperty.default)(propertiesObject[i].id).then(function (property) {
-      return createCarrousel(property);
+      return createCarousel(property);
     });
-  } //   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-  //   <div class="carousel-inner">
-  //     <div class="carousel-item active">
-  //       <img src="..." class="d-block w-100" alt="...">
-  //     </div>
-  //     <div class="carousel-item">
-  //       <img src="..." class="d-block w-100" alt="...">
-  //     </div>
-  //     <div class="carousel-item">
-  //       <img src="..." class="d-block w-100" alt="...">
-  //     </div>
-  //   </div>
-  //   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-  //     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  //     <span class="visually-hidden">Previous</span>
-  //   </button>
-  //   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-  //     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  //     <span class="visually-hidden">Next</span>
-  //   </button>
-  // </div>
-
+  }
 };
 
-var createCarrousel = function createCarrousel(item) {
+var createCarousel = function createCarousel(item) {
   var main = document.getElementById('show-properties');
   var propertyName = item.data.property.name;
+  var propertyId = item.data.property.id;
   var photos = item.data.property_photos;
   var photosLength = item.data.property_photos.length;
   var photoCover = item.data.cover_photo;
-  console.log(item);
-  var carrouselControls = document.createElement('div');
-  carrouselControls.id('carouselControls');
-  carrouselControls.className = 'carousel slide';
-  var carrouselInner = document.createElement('div');
-  carrouselInner.className = 'carousel-inner';
+  var carouselProperty = document.createElement('div');
+  carouselProperty.setAttribute('data-bs-ride', 'carousel');
+  carouselProperty.id = "carouselProperty".concat(propertyId);
+  carouselProperty.className = 'carousel slide';
+  var carouselIndicators = document.createElement('div');
+  carouselIndicators.className = 'carousel-indicators';
+  var carouselInner = document.createElement('div');
+  carouselInner.className = 'carousel-inner';
 
   for (var i = 0; i < photosLength; i++) {
-    var carrouselItem = document.createElement('div');
-    carrouselItem.className = 'carousel-item';
-    var img = document.createElement('img');
+    var buttonIndicator = document.createElement('button');
+    buttonIndicator.type = 'button';
+    buttonIndicator.setAttribute('data-bs-target', "#carouselProperty".concat(propertyId));
 
     if (i === 0) {
-      img.srcset = photoCover.path_url;
-    } else {
-      img.srcset = photos[i].path_url;
+      buttonIndicator.className = 'active';
+      buttonIndicator.setAttribute('aria-current', 'true');
     }
 
-    carrouselItem.append(img);
-    carrouselInner.append(carrouselItem);
+    ;
+    buttonIndicator.setAttribute('data-bs-slide-to', i);
+    buttonIndicator.setAttribute('aria-label', "Imagem ".concat(i + 1));
+    carouselIndicators.append(buttonIndicator);
+    carouselProperty.append(carouselIndicators);
+    var carouselItem = document.createElement('div');
+    carouselItem.className = 'carousel-item';
+    var img = document.createElement('img');
+    img.className = 'd-block w-100';
+
+    if (i === 0) {
+      // img.srcset = `./${photoCover.path_url}`;
+      img.src = "app/assets/images/cover-1.jpeg";
+      carouselItem.classList.add('active');
+    } else {
+      img.src = "./".concat(photos[i].path_url);
+    }
+
+    img.alt = "imagem de ".concat(propertyName);
+    carouselItem.append(img);
+    carouselInner.append(carouselItem);
   }
+
+  carouselProperty.append(carouselInner);
+  var buttonPrev = document.createElement('button');
+  buttonPrev.className = 'carousel-control-prev';
+  buttonPrev.type = 'button';
+  buttonPrev.setAttribute('data-bs-target', '#carouselControls');
+  buttonPrev.setAttribute('data-bs-slide', 'prev');
+  var spanPrev = document.createElement('span');
+  spanPrev.className = 'carousel-control-prev-icon';
+  spanPrev.setAttribute('aria-hidden', 'true');
+  var spanHiddenPrev = document.createElement('span');
+  spanHiddenPrev.className = 'visually-hidden';
+  spanHiddenPrev.textContent = 'Previous';
+  buttonPrev.append(spanPrev, spanHiddenPrev);
+  carouselInner.append(buttonPrev);
+  var buttonNext = document.createElement('button');
+  buttonNext.className = 'carousel-control-next';
+  buttonNext.type = 'button';
+  buttonNext.setAttribute('data-bs-target', '#carouselControls');
+  buttonNext.setAttribute('data-bs-slide', 'next');
+  var spanNext = document.createElement('span');
+  spanNext.className = 'carousel-control-next-icon';
+  spanNext.setAttribute('aria-hidden', 'true');
+  var spanHiddenNext = document.createElement('span');
+  spanHiddenNext.className = 'visually-hidden';
+  spanHiddenNext.textContent = 'Next';
+  buttonNext.append(spanNext, spanHiddenNext);
+  carouselInner.append(buttonNext);
+  var h1 = document.createElement('h1');
+  h1.innerHTML = item.data.property.name;
+  main.append(carouselProperty);
+  main.append(h1);
+  console.log(main);
 };
 
 var _default = listProperties;
@@ -2096,7 +2129,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40267" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45595" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
