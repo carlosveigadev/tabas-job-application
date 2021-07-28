@@ -6,12 +6,11 @@ body {
 .navbar {
   background-color: #000;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   border-radius: 0;
 }
 
 .tabas-navbar-logo {
-  margin-left: 3rem;
   align-self: center;
 }
 
@@ -56,6 +55,11 @@ body {
 .carousel {
   width: 300px;
   heigth: 300px;
+}
+
+.detailsDiv {
+  background-color: white;
+  width: 300px;
 }
 
 /*# sourceMappingURL=/main.e22427f9.css.map */

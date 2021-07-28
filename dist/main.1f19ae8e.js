@@ -2008,7 +2008,7 @@ var createCarousel = function createCarousel(item) {
   carouselProperty.setAttribute('data-bs-ride', 'carousel');
   carouselProperty.id = "carouselProperty".concat(propertyId);
   carouselProperty.className = 'carousel slide';
-  carouselProperty.setAttribute('data-interval', 'false');
+  carouselProperty.setAttribute('data-bs-interval', 'false');
   var carouselIndicators = document.createElement('div');
   carouselIndicators.className = 'carousel-indicators';
   var carouselInner = document.createElement('div');
@@ -2074,7 +2074,20 @@ var createCarousel = function createCarousel(item) {
   spanHiddenNext.textContent = 'Next';
   buttonNext.append(spanNext, spanHiddenNext);
   carouselProperty.append(buttonNext);
+  var detailsDiv = document.createElement('div');
+  detailsDiv.className = 'bg-white detailsDiv shadow';
+  var propertyTitle = document.createElement('h3');
+  propertyTitle.innerHTML = 'Address Information';
+  propertyTitle.className = 'fw-bold fs-4 text-secondary p-2';
+  var propertyInfo = document.createElement('p');
+  propertyInfo.innerHTML = propertyName;
+  propertyInfo.className = 'fs-6 text-secondary p-2';
+  var propertyPrice = document.createElement('p');
+  propertyPrice.innerHTML = "R$ ".concat(Math.floor(Math.random() * 10000), ",00/m\xEAs");
+  propertyPrice.className = 'fw-bolder fs-5 text-dark p-2';
+  detailsDiv.append(propertyTitle, propertyInfo, propertyPrice);
   holderDiv.append(carouselProperty);
+  holderDiv.append(detailsDiv);
   main.append(holderDiv);
 };
 

@@ -24,7 +24,7 @@ const createCarousel = (item) => {
   carouselProperty.setAttribute('data-bs-ride', 'carousel');
   carouselProperty.id = `carouselProperty${propertyId}`;
   carouselProperty.className = 'carousel slide';
-  carouselProperty.setAttribute('data-interval', 'false');
+  carouselProperty.setAttribute('data-bs-interval', 'false');
 
   const carouselIndicators = document.createElement('div');
   carouselIndicators.className = 'carousel-indicators';
@@ -103,7 +103,22 @@ const createCarousel = (item) => {
   buttonNext.append(spanNext, spanHiddenNext);
   carouselProperty.append(buttonNext);
 
+  const detailsDiv = document.createElement('div');
+  detailsDiv.className = 'bg-white detailsDiv shadow';
+  const propertyTitle = document.createElement('h3');
+  propertyTitle.innerHTML = 'Address Information';
+  propertyTitle.className = 'fw-bold fs-4 text-secondary p-2';
+  const propertyInfo = document.createElement('p');
+  propertyInfo.innerHTML = propertyName;
+  propertyInfo.className = 'fs-6 text-secondary p-2';
+  const propertyPrice = document.createElement('p');
+  propertyPrice.innerHTML = `R$ ${Math.floor(Math.random() * 10000)},00/mês`;
+  propertyPrice.className = 'fw-bolder fs-5 text-dark p-2';
+
+  detailsDiv.append(propertyTitle, propertyInfo, propertyPrice);
+  
   holderDiv.append(carouselProperty);
+  holderDiv.append(detailsDiv);
   main.append(holderDiv);
 }
 
