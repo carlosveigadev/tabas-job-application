@@ -32,7 +32,7 @@ After that, open the folder with the code editor of your choice and follow the s
 
 **Those commands will make sure you have the necessary gems to run the database**
 
-## **To run the webpage**
+## **To run the webpage open another terminal, make sure the backend server kept running.**
 **Make sure you have [Yarn](https://yarnpkg.com/) installed in your machine.**
 **Open the terminal and go to the folder of the game and run the following commands:** <br>
 * `yarn install` <br>
