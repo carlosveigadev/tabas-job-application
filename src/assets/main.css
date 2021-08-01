@@ -52,12 +52,11 @@ body {
   margin-top: 4rem;
 }
 
-.carousel {
-  width: 300px;
+.element-div {
+  width: 325px;
   heigth: 300px;
 }
 
 .detailsDiv {
   background-color: white;
-  width: 300px;
 }

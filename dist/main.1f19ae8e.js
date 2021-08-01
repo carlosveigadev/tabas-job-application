@@ -1973,27 +1973,13 @@ var fetchProperty = function fetchProperty(id) {
 
 var _default = fetchProperty;
 exports.default = _default;
-},{"axios":"../node_modules/axios/index.js"}],"modules/listProperties.js":[function(require,module,exports) {
+},{"axios":"../node_modules/axios/index.js"}],"modules/createCarousel.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
-var _fetchProperty = _interopRequireDefault(require("./apiRequests/fetchProperty"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var listProperties = function listProperties(properties) {
-  var propertiesObject = properties.data.objects;
-
-  for (var i = 0; i < propertiesObject.length; i++) {
-    (0, _fetchProperty.default)(propertiesObject[i].id).then(function (property) {
-      return createCarousel(property);
-    });
-  }
-};
 
 var createCarousel = function createCarousel(item) {
   var main = document.getElementById('show-properties');
@@ -2003,7 +1989,7 @@ var createCarousel = function createCarousel(item) {
   var photosLength = item.data.property_photos.length;
   var photoCover = item.data.cover_photo;
   var holderDiv = document.createElement('div');
-  holderDiv.className = 'col-4';
+  holderDiv.className = 'element-div mx-auto col-12';
   var carouselProperty = document.createElement('div');
   carouselProperty.setAttribute('data-bs-ride', 'carousel');
   carouselProperty.id = "carouselProperty".concat(propertyId);
@@ -2091,9 +2077,35 @@ var createCarousel = function createCarousel(item) {
   main.append(holderDiv);
 };
 
+var _default = createCarousel;
+exports.default = _default;
+},{}],"modules/listProperties.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _fetchProperty = _interopRequireDefault(require("./apiRequests/fetchProperty"));
+
+var _createCarousel = _interopRequireDefault(require("./createCarousel"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var listProperties = function listProperties(properties) {
+  var propertiesObject = properties.data.objects;
+
+  for (var i = 0; i < propertiesObject.length; i++) {
+    (0, _fetchProperty.default)(propertiesObject[i].id).then(function (property) {
+      return (0, _createCarousel.default)(property);
+    });
+  }
+};
+
 var _default = listProperties;
 exports.default = _default;
-},{"./apiRequests/fetchProperty":"modules/apiRequests/fetchProperty.js"}],"main.js":[function(require,module,exports) {
+},{"./apiRequests/fetchProperty":"modules/apiRequests/fetchProperty.js","./createCarousel":"modules/createCarousel.js"}],"main.js":[function(require,module,exports) {
 "use strict";
 
 var _getPropertiesData = _interopRequireDefault(require("./modules/apiRequests/getPropertiesData"));
@@ -2140,7 +2152,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38709" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36653" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
