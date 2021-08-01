@@ -1973,27 +1973,13 @@ var fetchProperty = function fetchProperty(id) {
 
 var _default = fetchProperty;
 exports.default = _default;
-},{"axios":"../node_modules/axios/index.js"}],"modules/listProperties.js":[function(require,module,exports) {
+},{"axios":"../node_modules/axios/index.js"}],"modules/createCarousel.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
-var _fetchProperty = _interopRequireDefault(require("./apiRequests/fetchProperty"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var listProperties = function listProperties(properties) {
-  var propertiesObject = properties.data.objects;
-
-  for (var i = 0; i < propertiesObject.length; i++) {
-    (0, _fetchProperty.default)(propertiesObject[i].id).then(function (property) {
-      return createCarousel(property);
-    });
-  }
-};
 
 var createCarousel = function createCarousel(item) {
   var main = document.getElementById('show-properties');
@@ -2003,7 +1989,7 @@ var createCarousel = function createCarousel(item) {
   var photosLength = item.data.property_photos.length;
   var photoCover = item.data.cover_photo;
   var holderDiv = document.createElement('div');
-  holderDiv.className = 'col-4';
+  holderDiv.className = 'element-div mx-auto col-12';
   var carouselProperty = document.createElement('div');
   carouselProperty.setAttribute('data-bs-ride', 'carousel');
   carouselProperty.id = "carouselProperty".concat(propertyId);
@@ -2091,20 +2077,123 @@ var createCarousel = function createCarousel(item) {
   main.append(holderDiv);
 };
 
+var _default = createCarousel;
+exports.default = _default;
+},{}],"modules/listProperties.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _fetchProperty = _interopRequireDefault(require("./apiRequests/fetchProperty"));
+
+var _createCarousel = _interopRequireDefault(require("./createCarousel"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var listProperties = function listProperties(properties) {
+  var propertiesObject = properties.data.objects;
+
+  for (var i = 0; i < propertiesObject.length; i++) {
+    (0, _fetchProperty.default)(propertiesObject[i].id).then(function (property) {
+      return (0, _createCarousel.default)(property);
+    });
+  }
+};
+
 var _default = listProperties;
 exports.default = _default;
-},{"./apiRequests/fetchProperty":"modules/apiRequests/fetchProperty.js"}],"main.js":[function(require,module,exports) {
+},{"./apiRequests/fetchProperty":"modules/apiRequests/fetchProperty.js","./createCarousel":"modules/createCarousel.js"}],"modules/createNavbar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var createNavbar = function createNavbar() {
+  var body = document.querySelector('body');
+  var navbar = document.createElement('nav');
+  navbar.id = 'header';
+  navbar.className = 'navbar fixed-top';
+  var imgLogoAnchor = document.createElement('a');
+  imgLogoAnchor.href = 'https://tabas.com/';
+  imgLogoAnchor.className = 'tabas-navbar-logo py-1 py-xl-0';
+  var imgLogo = document.createElement('img');
+  imgLogo.src = './assets/images/tabas-logo.svg';
+  imgLogo.alt = 'Tabas Logo Image';
+  imgLogoAnchor.append(imgLogo);
+  navbar.append(imgLogoAnchor);
+  var unorderedList = document.createElement('ul');
+  unorderedList.className = 'navigation-menu d-none d-xl-block';
+  var list = document.createElement('li');
+  var nameLinks = [{
+    linkName: 'APARTAMENTOS',
+    link: 'https://tabas.com/apartments/sao-paulo'
+  }, {
+    linkName: 'PROPRIETÁRIO',
+    link: 'https://tabas.com/propertyowner'
+  }, {
+    linkName: 'EMPRESA',
+    link: 'https://tabas.com.br/empresa'
+  }, {
+    linkName: 'BLOG',
+    link: 'https://www.blog.tabas.com.br/'
+  }, {
+    linkName: 'LANGUAGE'
+  }, {
+    linkName: 'SUPORTE'
+  }, {
+    linkName: 'ENTRAR',
+    link: 'https://tabas.com.br/member/login'
+  }, {
+    linkName: 'REGISTRAR',
+    link: 'https://tabas.com.br/member/sign_up'
+  }];
+  nameLinks.forEach(function (element) {
+    var anchor = document.createElement('a');
+
+    if (element.linkName === 'LANGUAGE') {
+      var languageImg = document.createElement('img');
+      languageImg.src = './assets/images/language-icon.svg';
+      languageImg.alt = 'Language Icon';
+      anchor.className = 'language-icon';
+      anchor.href = '#';
+      anchor.append(languageImg);
+      list.append(anchor);
+    } else {
+      anchor.innerHTML = "".concat(element.linkName);
+      anchor.href = "".concat(element.link);
+      anchor.className = 'text-white';
+      element.linkName === 'SUPORTE' && anchor.classList.add('support-border');
+      list.append(anchor);
+    }
+
+    unorderedList.append(list);
+    navbar.append(unorderedList);
+  });
+  body.append(navbar);
+};
+
+var _default = createNavbar;
+exports.default = _default;
+},{}],"main.js":[function(require,module,exports) {
 "use strict";
 
 var _getPropertiesData = _interopRequireDefault(require("./modules/apiRequests/getPropertiesData"));
 
 var _listProperties = _interopRequireDefault(require("./modules/listProperties"));
 
+var _createNavbar = _interopRequireDefault(require("./modules/createNavbar"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (function start() {
   var propertyApp = {
     init: function init() {
+      (0, _createNavbar.default)();
       (0, _getPropertiesData.default)().then(function (object) {
         return (0, _listProperties.default)(object);
       });
@@ -2112,7 +2201,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   };
   propertyApp.init();
 })();
-},{"./modules/apiRequests/getPropertiesData":"modules/apiRequests/getPropertiesData.js","./modules/listProperties":"modules/listProperties.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./modules/apiRequests/getPropertiesData":"modules/apiRequests/getPropertiesData.js","./modules/listProperties":"modules/listProperties.js","./modules/createNavbar":"modules/createNavbar.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -2140,7 +2229,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38709" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43469" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
