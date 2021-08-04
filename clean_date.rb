@@ -5,7 +5,7 @@ def clean_date(array)
   array.each do |date|
     new_array << Date.parse(date).to_s
   end
-  values_with_range(new_array.sort)
+  values_within_range(new_array.sort)
 end
 
 
@@ -17,7 +17,7 @@ def clean_date_with_checking(array)
     new_array << Date.strptime(date, '%d %b').to_s if is_valid_date?(date) == 'SIZE 2'
   end
 
-  values_with_range(new_array.sort)
+  values_within_range(new_array.sort)
 end
 
 def is_valid_date?(string)
@@ -28,7 +28,7 @@ def is_valid_date?(string)
   return 'SIZE 3' if splitted_string.size == 3 && array_of_abbr.include?(splitted_string[1])
 end
 
-def values_with_range(array)
+def values_within_range(array)
   result_array = []
   array.each do |date|
     if result_array.empty?
